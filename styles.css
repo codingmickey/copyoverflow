@@ -1,0 +1,13 @@
+/* Parent element */
+s {
+  position: relative;
+}
+/* onscroll="handleScroll()" */
+
+/* Copy button */
+button {
+  position: absolute;
+  top: 10px;
+  right: -191px;
+  transition: right 0.1s ease-in-out 0s;
+}

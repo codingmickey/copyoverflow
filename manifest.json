@@ -1,0 +1,11 @@
+{
+    "name": "copyoverflow",
+    "version": "1.0.0",
+    "description": "Adds a copy button to Stack Overflow code snippets",
+    "manifest_version": 3,
+    "author": "Kartik Jolapara",
+    "action": {
+        "default_popup": "index.html",
+        "default_title": "copyoverflow"
+    }
+}

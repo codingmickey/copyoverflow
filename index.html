@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    Hey
+</body>
+
+</html>
+
+<!-- Template code from tinkering in chrome dev tools -->
+<div class="s-prose js-post-body" itemprop="text">
+    <p>All credit goes to joelpt, but in case anyone else needs this to work in pure javascript without jQuery (I did),
+        here's an adaptation of his solution:</p>
+
+    <pre class="lang-js s-code-block" style="
+    position: relative;
+    /* overflow: auto; */
+    /* height: 1000px; */
+" onscroll="handleScroll()"><code class="hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">copyTextToClipboard</span>(<span class="hljs-params">text</span>) {
+  <span class="hljs-comment">//Create a textbox field where we can insert text to. </span>
+  <span class="hljs-keyword">var</span> copyFrom = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">createElement</span>(<span class="hljs-string">"textarea"</span>);
+
+  <span class="hljs-comment">//Set the text content to be the text you wished to copy.</span>
+  copyFrom.<span class="hljs-property">textContent</span> = text;
+
+  <span class="hljs-comment">//Append the textbox field into the body as a child. </span>
+  <span class="hljs-comment">//"execCommand()" only works when there exists selected text, and the text is inside </span>
+  <span class="hljs-comment">//document.body (meaning the text is part of a valid rendered HTML element).</span>
+  <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">appendChild</span>(copyFrom);
+
+  <span class="hljs-comment">//Select all the text!</span>
+  copyFrom.<span class="hljs-title function_">select</span>();
+
+  <span class="hljs-comment">//Execute command</span>
+  <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">execCommand</span>(<span class="hljs-string">'copy'</span>);
+
+  <span class="hljs-comment">//(Optional) De-select the text using blur(). </span>
+  copyFrom.<span class="hljs-title function_">blur</span>();
+
+  <span class="hljs-comment">//Remove the textbox field from the document.body, so no other JavaScript nor </span>
+  <span class="hljs-comment">//other elements can get access to this.</span>
+  <span class="hljs-variable language_">document</span>.<span class="hljs-property">body</span>.<span class="hljs-title function_">removeChild</span>(copyFrom);
+}
+</code><button id="copy-btn" style="position: absolute;top: 10px;right: -191px;transition: right 0.1s ease-in-out 0s;background: transparent;border: 1px solid white;border: 0;height: 37px;width: 37px;box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */transition: background-color 0.3s, box-shadow 0.3s; /* Add transition for hover effect */color: white;border-radius: 10px;" onclick="copyContent()"><svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24" style="padding-top: 2px;"><path d="M0 0h24v24H0z" fill="none"></path><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" fill="currentColor"></path></svg>
+</button></pre>
+
+
+</div>
