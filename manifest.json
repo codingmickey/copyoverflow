@@ -7,5 +7,23 @@
     "action": {
         "default_popup": "index.html",
         "default_title": "copyoverflow"
+    },
+    "permissions": [
+        "activeTab",
+        "scripting"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://stackoverflow.com/*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "run_at": "document_end"
+        }
+    ],
+    "icons": {
+        "128": "icons/icon128.png"
     }
 }
